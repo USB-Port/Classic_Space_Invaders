@@ -8,19 +8,13 @@ class Invader():
         self.x = 150
         self.y = 150
         self.speed = [65, 0]
-        #invader vector
-        self.change_x = 1
-        self.change_y = 0
-
-        self.size = 10
-
-        self.color = [255, 0, 0]
 
         self.invader = pygame.image.load("invaders.png")
         self.invaderRect = self.invader.get_rect()
 
         self.soundEffect = pygame.mixer.Sound("fastinvader1.wav")
         
+        #these 2 rects represent a partial box around the animation frame I want to retrive
         self.closeAnime = pygame.Rect(20,134,100,65)
         self.openAnime = pygame.Rect(127,134,100,65)
 
@@ -28,8 +22,6 @@ class Invader():
 
         # --- Class Methods ---
     def move(self):
-        #self.x += self.change_x
-        #self.y += self.change_y
         self.invaderRect = self.invaderRect.move(self.speed)
 
     def flipAnimation(self):
@@ -48,4 +40,3 @@ class Invader():
         else:
             screen.blit(self.invader, self.invaderRect, self.openAnime)
             
-        #pygame.draw.circle(screen, self.color, [self.x, self.y], self.size)
